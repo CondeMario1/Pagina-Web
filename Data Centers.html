@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Data Centers</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Igual al anterior, reutiliza el estilo */
+        .catalogo {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f9fbff;
+        }
+
+        .catalogo h1 {
+            text-align: center;
+            color: #0b5ed7;
+            margin-bottom: 30px;
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .producto {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 12px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .producto:hover {
+            transform: scale(1.05);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .producto h3 {
+            color: #1a73e8;
+            margin: 10px 0;
+        }
+
+        .producto p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .producto .precio {
+            color: #00c896;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .volver {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #0b5ed7;
+            font-weight: bold;
+        }
+
+        .volver:hover {
+            text-decoration: underline;
+        }
+        .detalle-producto {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .cerrar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }       
+        /* Estilo para menú desplegable */
+        .navbar ul li.dropdown {
+            position: relative;
+        }
+
+        .navbar ul li .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 1px solid #ccc;
+            z-index: 999;
+            min-width: 180px;
+        }
+
+        .navbar ul li .submenu li {
+            width: 100%;
+        }
+
+        .navbar ul li .submenu li a {
+            display: block;
+            padding: 10px;
+            color: #000;
+            text-decoration: none;
+            background-color: #fff;
+        }
+
+        .navbar ul li .submenu li a:hover {
+            background-color: #eee;
+        }
+
+        /* Mostrar el submenú al pasar el mouse */
+        .navbar ul li.dropdown:hover .submenu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="Logo">
+            <img src="Logo.png" alt="ConectaTech Logo">
+        </div>
+        <ul>
+            <li class="dropdown">
+              <a href="#servicios">Servicios</a>
+              <ul class="submenu">
+                <li><a href="Redes 5G.html" target="_blank">Redes 5G</a></li>
+                <li><a href="Iot.html" target="_blank">IoT Empresarial</a></li>
+                <li><a href="Data Centers.html" target="_blank">Data Centers</a></li>
+              </ul>
+            </li>
+            <li><a href="#porque">¿Por qué elegirnos?</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <section class="catalogo">
+        <h1>Productos - Data Centers</h1>
+        <div class="productos">
+            <div class="producto">
+                <img src="servidor_rack.jpg" alt="Servidor Rack">
+                <h3>Servidor Rack 2U</h3>
+                <p>Procesadores Xeon, redundancia y gran capacidad.</p>
+                <div class="precio">$2,500 USD</div>
+            </div>
+            <div class="producto">
+                <img src="switch_dc.jpg" alt="Switch DC">
+                <h3>Switch 48 puertos 10Gb</h3>
+                <p>Alta velocidad para entornos de misión crítica.</p>
+                <div class="precio">$1,800 USD</div>
+            </div>
+            <div class="producto">
+                <img src="enfriamiento.jpg" alt="Sistema de enfriamiento">
+                <h3>Sistema de Enfriamiento Modular</h3>
+                <p>Control térmico eficiente para racks de servidores.</p>
+                <div class="precio">$3,200 USD</div>
+            </div>
+            <div class="producto">
+                <img src="pdu.jpg" alt="PDU">
+                <h3>Unidad de Distribución de Energía (PDU) Inteligente</h3>
+                <p>Gestión energética optimizada para servidores de alta densidad.</p>
+                <div class="precio">$4,200 USD</div>
+            </div>
+        </div>
+        <a class="volver" href="Proyecto.html">← Volver a la página principal</a>
+    </section>
+    <div class="detalle-producto" id="detalle-antena">
+        <div class="modal">
+            <span class="cerrar">&times;</span>
+            <h2>Antena Base 5G</h2>
+            <p><strong>Descripción:</strong> Conectividad ultra rápida para zonas urbanas.</p>
+            <p><strong>Medidas:</strong> 120 cm x 40 cm x 40 cm</p>
+            <p><strong>Hecho en:</strong> Alemania</p>
+            <p><strong>Capacidad:</strong> Hasta 200 dispositivos simultáneos</p>
+            <p><strong>Precio:</strong> $1,500 USD</p>
+        </div>
+    </div>
+    <div class="detalle-producto" id="detalle-router">
+        <div class="modal">
+            <span class="cerrar">&times;</span>
+            <h2>Router 5G Empresarial</h2>
+            <p><strong>Descripción:</strong> Solución robusta para conectividad empresarial.</p>
+            <p><strong>Medidas:</strong> 30 cm x 20 cm x 6 cm</p>
+            <p><strong>Hecho en:</strong> EE. UU.</p>
+            <p><strong>Capacidad:</strong> Cobertura hasta 500 m²</p>
+            <p><strong>Precio:</strong> $850 USD</p>
+        </div>
+    </div>
+
+    <div class="detalle-producto" id="detalle-modem">
+        <div class="modal">
+            <span class="cerrar">&times;</span>
+            <h2>Módem Industrial 5G</h2>
+            <p><strong>Descripción:</strong> Resistente a ambientes hostiles con conectividad estable.</p>
+            <p><strong>Medidas:</strong> 18 cm x 10 cm x 4 cm</p>
+            <p><strong>Hecho en:</strong> Japón</p>
+            <p><strong>Capacidad:</strong> 24/7 funcionamiento continuo</p>
+            <p><strong>Precio:</strong> $600 USD</p>
+        </div>
+    </div>
+
+    <div class="detalle-producto" id="detalle-transceiver">
+        <div class="modal">
+            <span class="cerrar">&times;</span>
+            <h2>Transceiver Óptico 5G</h2>
+            <p><strong>Descripción:</strong> Alta velocidad para transmisión de datos por fibra.</p>
+            <p><strong>Medidas:</strong> 10 cm x 3 cm x 2 cm</p>
+            <p><strong>Hecho en:</strong> Corea del Sur</p>
+            <p><strong>Capacidad:</strong> Hasta 100 Gbps</p>
+            <p><strong>Precio:</strong> $450 USD</p>
+        </div>
+    </div>
+    <section id="contacto" class="bloque contacto-lateral">
+        <div class="contenido-contacto">
+            <div class="info">
+                <h2>Contáctanos</h2>
+                <h1>Mario.conde@cun.edu.co</h1>
+                <p>O déjanos tus datos y nos comunicaremos contigo pronto.</p>
+            </div>
+            <form class="formulario">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo" required>
+                <textarea name="mensaje" placeholder="Escribe tu mensaje" rows="5" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 ConectaTech. Todos los derechos reservados.</p>
+    </footer>
+<script>
+    // Abrir modal
+    document.querySelectorAll('.producto').forEach((producto, index) => {
+        producto.addEventListener('click', () => {
+            const modales = ['detalle-antena', 'detalle-router', 'detalle-modem', 'detalle-transceiver'];
+            document.getElementById(modales[index]).style.display = 'flex';
+        });
+    });
+
+    // Cerrar modal
+    document.querySelectorAll('.cerrar').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.detalle-producto').style.display = 'none';
+        });
+    });
+
+    // Cerrar al hacer clic fuera del modal
+    document.querySelectorAll('.detalle-producto').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>
